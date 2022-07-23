@@ -6,6 +6,7 @@ import {
   Post,
   Put,
   Delete,
+  Render,
 } from '@nestjs/common';
 import { FilekitaService } from './filekita.service';
 import { FilekitaDto } from './filekita.dto';
@@ -20,6 +21,12 @@ export class FilekitaController {
   // }
 
   @Get()
+  @Render('filekita/index.ejs')
+  root() {
+    return { message: 'Hello World!' };
+  }
+
+  @Get('jsondata')
   getOutputFromServiceAll() {
     return this.filekitaService.showAll();
   }
